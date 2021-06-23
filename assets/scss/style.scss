@@ -1,0 +1,69 @@
+// // импортирование шрифтов в основной файл
+// @include fonts("GilroyBold", "GilroyBold", "400", "normal");
+// @include fonts("GilroySemibold", "GilroySemibold", "400", "normal");
+// @include fonts("GilroyRegular", "GilroyRegular", "400", "normal");
+// @include fonts("GilroyMedium", "GilroyMedium", "400", "normal");
+
+// //  миксин для подключения файлов шрифтов
+// @mixin fonts($font_name, $file_name, $weight, $style) {
+
+//   @font-face {
+//   font-family: $font_name;
+//   font-display: swap;
+//   src: url("../fonts/#{$file_name}.woff") format("woff"), url("../fonts/#{$file_name}.woff2") format("woff2");
+//   font-weight: #{$weight};
+//   font-style: #{$style};
+//   }
+//   }
+@font-face{
+  font-family:"Gilroy";
+  font-display: swap;
+   src: url("../fonts/GilroyBold.woff") format("woff"), url("../fonts/GilroyBold.woff2") format("woff2");
+   font-weight: 700;
+   font-style: normal;
+}
+@font-face{
+  font-family:"Gilroy";
+  font-display: swap;
+   src: url("../fonts/GilroyMedium.woff") format("woff"), url("../fonts/GilroyMedium.woff2") format("woff2");
+   font-weight: 500;
+   font-style: normal;
+}
+
+@font-face{
+  font-family:"Gilroy";
+  font-display: swap;
+   src: url("../fonts/GilroyRegular.woff") format("woff"), url("../fonts/GilroyRegular.woff2") format("woff2");
+   font-weight: 400;
+   font-style: normal;
+}
+
+@font-face{
+  font-family:"Gilroy";
+  font-display: swap;
+   src: url("../fonts/GilroySemibold.woff") format("woff"), url("../fonts/GilroySemibold.woff2") format("woff2");
+   font-weight: 600;
+   font-style: normal;
+}
+body {
+  font-size: 15px;
+  display: flex;
+  font-family: "Gilroy";
+  font-weight: 600;
+}
+
+span {
+  font-size: 20px;
+  @media (max-width: 767px) {
+    font-size: 15px;
+  }
+}
+div {
+  font-size: 30px;
+  background: url("../img/furniture/02.jpg") 0 0 no-repeat;
+  height: 50vh;
+  width: 500px;
+  @media (max-width: 767px) {
+    font-size: 20px;
+  }
+}
