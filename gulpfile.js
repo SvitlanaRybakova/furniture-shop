@@ -19,17 +19,17 @@ const path = {
   },
   assets: {
     html: [source_folder + "/*.html", "!" + source_folder + "/_*.html"],
-    css: source_folder + "/scss/**/*.scss",
-    js: source_folder + "/js/script.js",
-    img: source_folder + "/img/**/*.{jpg,png,svg,gif,ico,webp}",
+    css: source_folder + "/scss/*.scss",
+    js: source_folder + "/js/*.js",
+    img: source_folder + "/img/*.{jpg,png,svg,gif,ico,webp}",
     fonts: source_folder + "/fonts/*.ttf",
     iconsfont: source_folder + "/iconfont/",
   },
   watch: {
     html: source_folder + "/**/*.html",
-    css: source_folder + "/scss/**/*.scss",
-    js: source_folder + "/js/**/*.js",
-    img: source_folder + "/img/**/*.{jpg,png,svg,gif,ico,webp}",
+    css: source_folder + "/scss/*.scss",
+    js: source_folder + "/js/*.js",
+    img: source_folder + "/img/*.{jpg,png,svg,gif,ico,webp}",
     iconsfont: source_folder + "/iconfont/",
   },
   clean: "./" + project_folder + "/",
@@ -54,6 +54,7 @@ const svgSprite = require("gulp-svg-sprite");
 const ttf2woff = require("gulp-ttf2woff");
 const ttf2woff2 = require("gulp-ttf2woff2");
 const fonter = require("gulp-fonter");
+const concat = require("gulp-concat");
 
 // настраиваю сервер
 function browserSync() {
@@ -88,6 +89,7 @@ function css() {
     .pipe(webpcss({ webpClass: ".webp", noWebpClass: ".no-webp" }))
     .pipe(dest(path.build.css))
     .pipe(clean_css())
+    .pipe(concat("index.css"))
     .pipe(rename({ extname: ".min.css" }))
     .pipe(dest(path.build.css))
     .pipe(browsersync.stream());

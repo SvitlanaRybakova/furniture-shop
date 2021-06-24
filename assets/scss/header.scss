@@ -1,0 +1,216 @@
+@import "variables";
+// header
+.header {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+
+  // header_wrapper
+  &__wrapper {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: 0;
+    z-index: 50;
+  }
+
+  // header__container
+  &__container {
+  }
+
+  // header__body
+  &__body {
+    display: flex;
+    align-items: center;
+    padding: 5px 0;
+    min-height: 125px;
+  }
+
+  // header__main
+  &__main {
+    display: flex;
+    align-items: center;
+    flex: 0 0 494/1240 * 100%;
+  }
+
+  // header__logo
+  &__logo {
+    color: #000;
+    font-family: Gilroy;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 29/24 * 100%;
+  }
+
+  //header__menu
+  &__menu {
+  }
+
+  // header__search
+  &__search {
+  }
+
+  // header__actions
+  &__actions {
+  }
+}
+
+// menu
+.menu {
+  flex: 0 1 420px;
+
+  // menu__body
+  &__body {
+  }
+
+  // menu__list
+  &__list {
+    @media (min-width: $md3+px  /*768px*/) {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+    }
+  }
+
+  // menu__item
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 0px 3px;
+    padding: 5px 0px;
+    position: relative;
+    // стили внутри этого медиазапроса будут работать на устройствах где есть мышка, на тач скринах этот код работать не будет Стили прописываю в родителе но для чайлдов (menu__sub-list)
+    // Я хочу что бы на ПК вложенное меню открывалось при наведении мыши на стрелку, но на мобильных утройствах - при клике на стрелку (для этого я добавила дополнительную кнопку в разметке
+    @media (any-hover: hover) {
+      &:hover {
+        .menu__sub-list{
+          transform: translate(0px 0px);
+          opacity: 1;
+          visibility: visible;
+          pointer-events: auto;
+        }
+        .menu__arrow {
+          transform: rotate(-180deg);
+        }
+        .menu__arrow,
+        .menu__link{
+          color: $orangeColor;
+        }
+      }
+    }
+    // для тачскринов но ширина выше 768px, те которые меньше = код для них в js
+   @media (min-width: $md3+px) {
+     &._hover {
+      .menu__sub-list{
+        transform: translate(0px 0px);
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+      }
+      .menu__arrow {
+        transform: rotate(-180deg);
+      }
+      .menu__arrow,
+      .menu__link{
+        color: $orangeColor;
+      }
+     }
+   }
+  }
+
+  // menu__link
+  &__link {
+    font-weight: 500;
+    color: inherit;
+    transition: color 0.3s ease 0s;
+  }
+
+  // menu__arrow
+  &__arrow {
+    margin: 0px 0px 0px 8px;
+    transition: all 0.3s ease 0s;
+    font-size: 8px;
+  }
+
+  // menu__sub-list
+  &__sub-list {
+    position: relative;
+    background-color: $orangeColor;
+    padding: 15px;
+    flex: 1 1 100%;
+    @media (min-width: $md3+px) {
+      // скрываю меню
+      opacity: 0;
+      transition: all 0.3s ease 0s;
+      transform: translate(0px 10px);
+      visibility: hidden;
+      // скрываю меню
+      min-width: 200px;
+      left: 0;
+      position: absolute;
+      top: 100%;
+      pointer-events: none;
+    }
+  }
+
+  // menu__sub-item
+  &__sub-item {
+    // отступ вниз дя всех объектов, кроме последнего
+    &:not(:last-child) {
+      margin: 0px 0px 5px 0px;
+    }
+  }
+
+  // menu__sub-link
+  &__sub-link {
+    color: #fff;
+    line-height: 120%;
+  }
+}
+
+//Burger menu
+.icon-menu {
+  display: none;
+  @media (max-width: $md3+px /*768px*/) {
+    display: block;
+    position: absolute;
+    top: 18px;
+    right: 10px;
+    width: 30px;
+    height: 18px;
+    cursor: pointer;
+    z-index: 5;
+    span {
+      transition: all 0.3s ease 0s;
+      top: calc(50% - 1px);
+      left: 0px;
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      background-color: #000;
+      &:first-child {
+        top: 0px;
+      }
+      &:last-child {
+        top: auto;
+        bottom: 0px;
+      }
+    }
+    &_active {
+      span {
+        transform: scale(0);
+        &:first-child {
+          transform: rotate(-45deg);
+          top: calc(50% - 1px);
+        }
+        &:last-child {
+          transform: rotate(45deg);
+          bottom: calc(50% - 1px);
+        }
+      }
+    }
+  }
+}
