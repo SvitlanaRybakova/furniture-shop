@@ -1,4 +1,5 @@
 import { isMobile } from "./utils.js";
+import { setSpollerAction } from "./utils.js";
 
 // проверяет может ли браузер отобразить формат картинок webp и если да, то доавляет специальный класс
 function testWebP(callback) {
@@ -22,9 +23,10 @@ testWebP(function (support) {
 window.onload = function () {
   const documentActions = (e) => {
     const target = e.target;
-
-    if (window.innerWidth > 768 && isMobile.any()) {
+    console.log(window.innerWidth, window.innerWidth > 768);
+    if (window.innerWidth < 768 && isMobile.any()) {
       if (target.classList.contains("menu__arrow")) {
+        console.log("inside");
         target.closest(".menu__item").classList.toggle("_hover");
       }
       // убираю субменю при нажатии на body
@@ -39,7 +41,19 @@ window.onload = function () {
         });
       }
     }
+    // показываю поле поиска при нажатии на кнопку
+    if (target.classList.contains("search-form__icon")) {
+      document.querySelector(".search-form").classList.toggle("_active");
+    } else if (
+      !target.closest(".search-form") &&
+      document.querySelectorAll(".search-form_active")
+    ) {
+      document.querySelector(".search-form").classList.remove("_active");
+    }
+    //
   };
 
   document.addEventListener("click", documentActions);
+
+ 
 };

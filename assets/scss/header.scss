@@ -25,6 +25,13 @@
     align-items: center;
     padding: 5px 0;
     min-height: 125px;
+    position: relative;
+    @media (min-width: $md2+px) {
+      min-height: 80px;
+    }
+    @media (min-width: $md3+px) {
+      min-height: 50px;
+    }
   }
 
   // header__main
@@ -32,6 +39,9 @@
     display: flex;
     align-items: center;
     flex: 0 0 494/1240 * 100%;
+    @media (max-width: $md2+px) {
+      flex: 1 1 auto;
+    }
   }
 
   // header__logo
@@ -41,6 +51,8 @@
     font-weight: 700;
     font-size: 24px;
     line-height: 29/24 * 100%;
+    position: relative;
+    z-index: 5;
   }
 
   //header__menu
@@ -49,6 +61,9 @@
 
   // header__search
   &__search {
+    @media (min-width: $md2+px) {
+      flex: 1 1 auto;
+    }
   }
 
   // header__actions
@@ -61,7 +76,39 @@
   flex: 0 1 420px;
 
   // menu__body
+  // изначально скрыт, но при клике на бургер иконку будеь показываться
   &__body {
+    @media (max-width: $md3+px  /*768px*/) {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      top: 0;
+      left: -100%;
+      background-color: #fff;
+      transition: left 0.3s ease 0s;
+      padding: 70px 15px 30px 15px;
+ // подложка под меню для мобильного разрешения что бы не было накладки логотипаа на элементы меню
+      &::before{
+        content: "";
+        position: fixed;
+        width: 100%;
+        height: 50px;
+        top: 0;
+        left: -100%;
+        transition: left 0.3s ease 0s;
+        background-color: #fcf8f3;
+        z-index: 2;
+      }
+      &._active {
+        left:0;
+        &::before{
+          left: 0;
+        }
+      }
+    }
+   
+    
   }
 
   // menu__list
@@ -86,7 +133,7 @@
     // Я хочу что бы на ПК вложенное меню открывалось при наведении мыши на стрелку, но на мобильных утройствах - при клике на стрелку (для этого я добавила дополнительную кнопку в разметке
     @media (any-hover: hover) {
       &:hover {
-        .menu__sub-list{
+        .menu__sub-list {
           transform: translate(0px 0px);
           opacity: 1;
           visibility: visible;
@@ -96,29 +143,35 @@
           transform: rotate(-180deg);
         }
         .menu__arrow,
-        .menu__link{
+        .menu__link {
           color: $orangeColor;
         }
       }
     }
     // для тачскринов но ширина выше 768px, те которые меньше = код для них в js
-   @media (min-width: $md3+px) {
-     &._hover {
-      .menu__sub-list{
-        transform: translate(0px 0px);
-        opacity: 1;
-        visibility: visible;
-        pointer-events: auto;
+    @media (min-width: $md3+px) {
+      &._hover {
+        .menu__sub-list {
+          transform: translate(0px 0px);
+          opacity: 1;
+          visibility: visible;
+          pointer-events: auto;
+        }
+        .menu__arrow {
+          transform: rotate(-180deg);
+        }
+        .menu__arrow,
+        .menu__link {
+          color: $orangeColor;
+        }
       }
-      .menu__arrow {
-        transform: rotate(-180deg);
+    }
+    @media (max-width: $md3+px) {
+      margin: 0px 0px 15px 0px;
+      &:last-child {
+        margin-bottom: 0;
       }
-      .menu__arrow,
-      .menu__link{
-        color: $orangeColor;
-      }
-     }
-   }
+    }
   }
 
   // menu__link
@@ -126,6 +179,10 @@
     font-weight: 500;
     color: inherit;
     transition: color 0.3s ease 0s;
+    @media (max-width: $md3+px) {
+      font-size: 24px;
+      font-weight: 600;
+    }
   }
 
   // menu__arrow
@@ -133,6 +190,9 @@
     margin: 0px 0px 0px 8px;
     transition: all 0.3s ease 0s;
     font-size: 8px;
+    @media (max-width: $md3+px) {
+      font-size: 14px;
+    }
   }
 
   // menu__sub-list
@@ -141,6 +201,7 @@
     background-color: $orangeColor;
     padding: 15px;
     flex: 1 1 100%;
+
     @media (min-width: $md3+px) {
       // скрываю меню
       opacity: 0;
@@ -153,6 +214,10 @@
       position: absolute;
       top: 100%;
       pointer-events: none;
+      z-index: 5;
+    }
+    @media (max-width: $md3+px) {
+      margin: 10px -15px 0px -15px;
     }
   }
 
@@ -162,12 +227,154 @@
     &:not(:last-child) {
       margin: 0px 0px 5px 0px;
     }
+    @media (max-width: $md3+px) {
+      margin: 0 0 10px 0;
+    }
   }
 
   // menu__sub-link
   &__sub-link {
     color: #fff;
     line-height: 120%;
+    @media (max-width: $md3+px) {
+      font-size: 18px;
+    }
+    @media (any-hover: hover) {
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.search-form {
+  max-width: 473px;
+  margin-right: 10px;
+  // показываю search-form  когда он получает класс _active из js
+  &._active {
+    .search-form__item {
+      opacity: 1;
+      top: 100%;
+      visibility: visible;
+    }
+    .search-form__icon {
+      color: $orangeColor;
+    }
+  }
+  // .search-form__icon
+  &__icon {
+    // дополнительная кнопка поиска для мобильных устройств
+    position: relative;
+    z-index: 5;
+    font-size: 22px;
+    color: #262f56;
+    @media (min-width: $md2+px) {
+      display: none;
+    }
+  }
+  // .search-form__item
+  &__item {
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    // убираю поиск в иконку на ширине 992px
+    @media (max-width: $md2+px) {
+      box-shadow: 0 0 5px rgba(212, 209, 205, 0.3);
+      position: absolute;
+      width: 100%;
+      left: 0;
+      top: -100%;
+      z-index: 5;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease 0s;
+    }
+  }
+  // search-form__btn
+  &__btn {
+    flex: 0 0 45px;
+    height: 45px;
+    font-size: 15px;
+    color: #333333;
+    // padding: ;
+  }
+  &__input {
+    border: none;
+    font-size: 14px;
+    color: $darkGrayColor;
+    padding: 10px 10px 10px 0px;
+    width: 100%;
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.actions-header {
+  // border: 1px solid red;
+  position: relative;
+  z-index: 5;
+  display: grid;
+  grid-template-columns: auto;
+  // элементы выстраиваются в ряд независимо от количества
+  grid-auto-flow: column;
+  align-items: center;
+  // actions-header__item
+  &__item {
+    // actions-header__item_favorites
+    &_favorites {
+      color: #262f56;
+      font-size: 24px;
+      transition: color 0.3s ease 0s;
+      @media (any-hover: hover) {
+        &:hover {
+          color: $orangeColor;
+        }
+      }
+    }
+    // actions-header__item_user
+    &_user {
+      width: 40px;
+      height: 40px;
+      overflow: hidden;
+      border-radius: 50%;
+    }
+  }
+}
+
+.cart-header {
+  // cart-header__icon
+  &__icon {
+    margin-left: 20px;
+    color: #262f56;
+    font-size: 24px;
+    transition: color 0.3s ease 0s;
+    position: relative;
+    display: block;
+    @media (any-hover: hover) {
+      &:hover {
+        color: $orangeColor;
+      }
+    }
+    span {
+      position: absolute;
+      width: 17px;
+      height: 17px;
+      display: flex;
+      justify-content: center;
+      top: -10px;
+      right: -10px;
+      border-radius: 50%;
+      background-color: $orangeColor;
+      color: #fff;
+      font-size: 14px;
+    }
+  }
+  // cart-header__body
+  &__body {
+  }
+  // cart-header__list
+  &__list {
   }
 }
 
@@ -176,10 +383,8 @@
   display: none;
   @media (max-width: $md3+px /*768px*/) {
     display: block;
-    position: absolute;
-    top: 18px;
-    right: 10px;
-    width: 30px;
+    position: relative;
+    flex: 0 0 30px;
     height: 18px;
     cursor: pointer;
     z-index: 5;

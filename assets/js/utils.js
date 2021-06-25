@@ -23,3 +23,12 @@ export const checkDevice = () => {
     }
 }
 
+export const setSpollerAction = (e) => {
+  const el = e.target;
+  if(el.hasAttribute('data-spoller') || el.closest('[data-spoller]')){
+    const spollerTitle = el.hasAttribute('data-spoller') ? el :  el.closest('[data-spoller]');
+    const spollersBlock = spollerTitle.closest('[data-spollers]');
+    console.log("spollerTitle", spollerTitle, );
+    console.log("spollerBlock", spollersBlock);
+  }
+}

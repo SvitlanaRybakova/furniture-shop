@@ -63,6 +63,7 @@ body{
   color: $mainColor;
   font-family: $fontFamily;
   font-size: $fontSize;
+  background: #f9f1e7;
   & a{
     text-decoration: none;
   }
@@ -72,6 +73,9 @@ body{
   & button {
     border: none;
     background-color: transparent;
+  }
+  & img {
+    width: 100%;
   }
   &._lock {
     overflow: hidden;
@@ -95,5 +99,4 @@ body{
   max-width: $maxWidthContainer + px;
   padding: 0px 15px;
   margin: 0 auto;
-  border: 1px solid red;
 }
