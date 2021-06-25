@@ -60,6 +60,11 @@
 
 // обнуление общие параметры
 body{
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
   color: $mainColor;
   font-family: $fontFamily;
   font-size: $fontSize;
@@ -69,7 +74,9 @@ body{
   }
   & ul {
     list-style-type: none;
+  
   }
+ 
   & button {
     border: none;
     background-color: transparent;

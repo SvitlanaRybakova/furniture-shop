@@ -1,5 +1,9 @@
 import { isMobile } from "./utils.js";
-import { setSpollerAction } from "./utils.js";
+
+const menuBody = document.querySelector(".menu__body");
+const iconMenu = document.querySelector(".icon-menu");
+const menuArrow = document.querySelectorAll(".menu__arrow");
+const subMenu = document.querySelector(".menu__sub-list");
 
 // проверяет может ли браузер отобразить формат картинок webp и если да, то доавляет специальный класс
 function testWebP(callback) {
@@ -23,10 +27,9 @@ testWebP(function (support) {
 window.onload = function () {
   const documentActions = (e) => {
     const target = e.target;
-    console.log(window.innerWidth, window.innerWidth > 768);
+  
     if (window.innerWidth < 768 && isMobile.any()) {
       if (target.classList.contains("menu__arrow")) {
-        console.log("inside");
         target.closest(".menu__item").classList.toggle("_hover");
       }
       // убираю субменю при нажатии на body
@@ -55,5 +58,16 @@ window.onload = function () {
 
   document.addEventListener("click", documentActions);
 
- 
+  // открываю = закрываю бургер меню
+  iconMenu.addEventListener("click", (e) => {
+    const target = e.target;
+    if (target.classList.contains("icon-menu")) {
+      menuBody.classList.toggle("_active");
+      iconMenu.classList.toggle("icon-menu_active");
+    }
+  });
+  // открываю-закрываю субменю
+  if (target.classList.contains("menu__arrow")) {
+    target.closest(".menu__item").classList.toggle("none");
+  }
 };
