@@ -19,9 +19,9 @@ const path = {
   },
   assets: {
     html: [source_folder + "/*.html", "!" + source_folder + "/_*.html"],
-    css: source_folder + "/scss/*.scss",
+    css: source_folder + "/scss/*.{css,scss}",
     js: source_folder + "/js/*.js",
-    img: source_folder + "/img/*.{jpg,png,svg,gif,ico,webp}",
+    img: source_folder + "/img/**/*.{jpg,png,svg,gif,ico,webp}",
     fonts: source_folder + "/fonts/*.ttf",
     iconsfont: source_folder + "/iconfont/",
   },

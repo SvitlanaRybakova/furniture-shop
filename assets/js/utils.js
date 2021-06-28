@@ -32,3 +32,34 @@ export const setSpollerAction = (e) => {
     console.log("spollerBlock", spollersBlock);
   }
 }
+
+export const init_Swiper = () => {
+  const  mySwiper = new Swiper('.swiper-container', {
+    // Optional parameters
+    observer: true,
+    observerParents: true,
+    slidesPerView: 1,
+    spaceBetween: 32,
+    watchOverflow: true,
+    speed: 800,
+    autoplay: true,
+    loop: true,
+    loopAdditionalSlides: 5,
+    preloadImages: false,
+    parallax: true,
+  
+    // If we need pagination
+    pagination: {
+      el: '.controls-slider-main__dotts',
+      clickable: true,
+    },
+  
+    // Navigation arrows
+    navigation: {
+      nextEl: '.slider-arrow_next',
+      prevEl: '.slider-arrow_prew',
+    },
+  
+    
+  });
+}

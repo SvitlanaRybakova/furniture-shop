@@ -5,7 +5,15 @@
   width: 100%;
   top: 0;
   left: 0;
-
+  min-height: 40px;
+@media (max-width: $md3+px) {
+  min-height: 5px;
+}
+&._scroll{
+  .header__wrapper{
+    background:#f9f1e7;
+  }
+}
   // header_wrapper
   &__wrapper {
     position: fixed;

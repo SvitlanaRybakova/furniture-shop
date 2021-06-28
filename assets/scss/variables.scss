@@ -1,7 +1,7 @@
 
 // шрифты по умолчанию
 $fontFamily: "Gilroy";
-$fontSize: 16;
+$fontSize: 16px;
 
 // переменные
 $minWidth: 320px;
@@ -16,3 +16,10 @@ $mainColor:#3a3a3a;
 $orangeColor: #e89f71;
 $grayColor: #898989;
 $darkGrayColor:#616161;
+
+// MIXINS
+@mixin adaptiv-property($property,$pcSize, $mobSize) {
+  $addSize: $pcSize - $mobSize;
+  $maxWidth: $maxWidth - 320;
+  $property: calc(#{$mobSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidth}));
+ }
