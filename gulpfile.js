@@ -16,6 +16,7 @@ const path = {
     img: project_folder + "/img/",
     fonts: project_folder + "/fonts/",
     iconsfont: project_folder + "/iconfont/",
+    json:  project_folder + "/json/"
   },
   assets: {
     html: [source_folder + "/*.html", "!" + source_folder + "/_*.html"],
@@ -24,6 +25,7 @@ const path = {
     img: source_folder + "/img/**/*.{jpg,png,svg,gif,ico,webp}",
     fonts: source_folder + "/fonts/*.ttf",
     iconsfont: source_folder + "/iconfont/",
+    json: source_folder + "/json/*.*"
   },
   watch: {
     html: source_folder + "/**/*.html",
@@ -31,6 +33,7 @@ const path = {
     js: source_folder + "/js/*.js",
     img: source_folder + "/img/*.{jpg,png,svg,gif,ico,webp}",
     iconsfont: source_folder + "/iconfont/",
+    json: source_folder + "/json/*.*"
   },
   clean: "./" + project_folder + "/",
 };
@@ -67,6 +70,10 @@ function browserSync() {
   });
 }
 
+function json(){
+  return src(path.assets.json)
+  .pipe(dest(path.build.json))
+}
 // функция для работы с html files
 function html() {
   return src(path.assets.html)
@@ -173,6 +180,7 @@ function watchFiles() {
   gulp.watch([path.watch.css], css);
   gulp.watch([path.watch.js], js);
   gulp.watch([path.watch.img], images);
+  gulp.watch([path.watch.json], json);
 }
 
 // запись и подключение шрифтов к файлу стилей
@@ -210,7 +218,7 @@ function watchFiles() {
 
 let build = gulp.series(
   clean,
-  gulp.parallel(js, css, html, images, fonts)
+  gulp.parallel(js, css, html, images, fonts, json)
 );
 let watch = gulp.parallel(build, watchFiles, browserSync);
 
@@ -218,6 +226,7 @@ let watch = gulp.parallel(build, watchFiles, browserSync);
 exports.fonts = fonts;
 exports.images = images;
 exports.js = js;
+exports.json = json;
 exports.css = css;
 exports.build = build;
 exports.html = html;

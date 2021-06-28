@@ -1,5 +1,6 @@
 import { isMobile } from "./utils.js";
 import { init_Swiper} from "./utils.js";
+import { getProducts } from "./getProductsDetails.js"
 
 const menuBody = document.querySelector(".menu__body");
 const iconMenu = document.querySelector(".icon-menu");
@@ -56,7 +57,11 @@ window.onload = function () {
     ) {
       document.querySelector(".search-form").classList.remove("_active");
     }
-    //
+    //show more buuton
+    if(target.classList.contains("products__more")) {
+      getProducts(target);
+      e.preventDefault;
+    }
   };
 
   document.addEventListener("click", documentActions);
