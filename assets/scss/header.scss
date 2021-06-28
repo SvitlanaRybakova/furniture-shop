@@ -13,9 +13,16 @@
   .header__wrapper{
     background:#f9f1e7;
   }
+  .header__body{
+    min-width: 50px;
+    @media (max-width: $md2+px) {
+      min-height: 70px;
+    }
+  }
 }
   // header_wrapper
   &__wrapper {
+    transition: background 0.3s ease 0s;
     position: fixed;
     width: 100%;
     left: 0;
@@ -29,6 +36,7 @@
 
   // header__body
   &__body {
+    transition: min-height 0.3s ease 0s;
     display: flex;
     align-items: center;
     padding: 5px 0;
