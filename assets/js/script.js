@@ -2,6 +2,7 @@ import { isMobile } from "./utils.js";
 import { init_Swiper} from "./utils.js";
 import { getProducts } from "./getProductsDetails.js"
 import { addToCart } from "./cart.js";
+import { updateCart } from "./cart.js";
 
 
 const menuBody = document.querySelector(".menu__body");
@@ -71,7 +72,27 @@ window.onload = function () {
       e.preventDefault()
       const productId = target.closest('.item-product').dataset.pid;
       addToCart(target, productId);
+    }
 
+    // открытие списка покупок при клике на иконку корзины
+    if(target.classList.contains('cart-header__icon') || target.closest('.cart-header__icon')){
+      
+      if(document.querySelector('.cart-list__item').children.length > 0){
+       
+        document.querySelector('.cart-header').classList.toggle('_active')
+      }
+      e.preventDefault()
+    }else if(!target.closest('.cart-header') && !target.classList.contains('actions-product__button')){
+       console.log('click');
+      document.querySelector('.cart-header').classList.remove('_active')
+    }
+
+    // удаление из корзины
+    if(target.classList.contains('cart-list__delete')){
+      const productId = target.closest('.cart-list__item').dataset.cartPid;
+      console.log(productId);
+      updateCart(target, productId, false)
+      e.preventDefault()
     }
   };
 
