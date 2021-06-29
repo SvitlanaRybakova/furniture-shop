@@ -1,6 +1,7 @@
 import { isMobile } from "./utils.js";
 import { init_Swiper} from "./utils.js";
 import { getProducts } from "./getProductsDetails.js"
+import { addToCart } from "./cart.js";
 
 
 const menuBody = document.querySelector(".menu__body");
@@ -60,10 +61,17 @@ window.onload = function () {
       document.querySelector(".search-form").classList.remove("_active");
     }
     //show more button
-   
     if(target.classList.contains("products__more")) {
       getProducts(target);
       e.preventDefault;
+    }
+
+    // добавление в корзину
+    if(target.classList.contains('actions-product__button')){
+      e.preventDefault()
+      const productId = target.closest('.item-product').dataset.pid;
+      addToCart(target, productId);
+
     }
   };
 

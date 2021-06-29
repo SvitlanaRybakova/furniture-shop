@@ -122,7 +122,6 @@ export const getProducts = async (button) => {
 
   if(!button){
     const data = await fetchData();
-    console.log(data);
     loadProducts(data.slice(0, 4));
   }
 };

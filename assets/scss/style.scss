@@ -98,6 +98,12 @@ body {
   line-height: 120%;
   text-align: center;
 }
+._flyImage{
+  opacity: 1;
+  position: fixed;
+  z-index: 100;
+  transition: all 1s ease 0s;
+}
 .btn {
   display: inline-flex;
   justify-content: center;
