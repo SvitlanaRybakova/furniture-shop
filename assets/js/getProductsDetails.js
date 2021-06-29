@@ -106,6 +106,7 @@ const loadProducts = (data) => {
    
 
     return productTemplate
+
   });
   productsItems.insertAdjacentHTML("beforeend", test);
 };
@@ -121,6 +122,7 @@ export const getProducts = async (button) => {
 
   if(!button){
     const data = await fetchData();
+    console.log(data);
     loadProducts(data.slice(0, 4));
   }
 };
