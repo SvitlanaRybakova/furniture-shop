@@ -1,5 +1,17 @@
 const productsItems = document.querySelector(".products__items");
 
+const fetchData = async() => {
+  const file = "json/products.json";
+    let response = await fetch(file, {
+      method: "GET",
+    });
+    if (response.ok) {
+      let result = await response.json();
+      return result;
+    } else {
+      throw new Error("error", response);
+    }
+}
 const loadProducts = (data) => {
   const test = data.map((product) => {
     const {
@@ -30,9 +42,7 @@ const loadProducts = (data) => {
 
       productTemplateLabels = productTemplateLabelsStart +
       productTemplateLabelsContent + productTemplateLabelsEnd
-      // productTemplateLabels += productTemplateLabelsStart;
-      // productTemplateLabels += productTemplateLabelsContent;
-      // productTemplateLabels += productTemplateLabelsEnd;
+
     }
     const productTemplateImage = `
       <a href="${url}" class="item-product__image">
@@ -85,12 +95,7 @@ const loadProducts = (data) => {
     productTemplatePrices +
     productTemplateActions +
     productTemplateBodyEnd;
-    // productTemplateBody += productTemplateBodyStart;
-    // productTemplateBody += productTemplateBodyContent;
-    // productTemplateBody += productTemplatePrices;
-    // productTemplateBody += productTemplateActions;
-    // productTemplateBody += productTemplateBodyEnd;
-    
+   
 
     let productTemplate ="";
     productTemplate = productTemplateStart +
@@ -98,11 +103,7 @@ const loadProducts = (data) => {
     productTemplateImage +
     productTemplateBody +
     productTemplateEnd;
-    // productTemplate += productTemplateStart;
-    // productTemplate += productTemplateLabels;
-    // productTemplate += productTemplateImage;
-    // productTemplate += productTemplateBody;
-    // productTemplate += productTemplateEnd;
+   
 
     return productTemplate
   });
@@ -110,20 +111,16 @@ const loadProducts = (data) => {
 };
 
 export const getProducts = async (button) => {
-  console.log("click on ", button);
-  if (!button.classList.contains("_hold")) {
+  if (button && !button.classList.contains("_hold")) {
     button.classList.add("_hold");
-    const file = "json/products.json";
-    let response = await fetch(file, {
-      method: "GET",
-    });
-    if (response.ok) {
-      let result = await response.json();
-      loadProducts(result);
-      button.classList.remove("_hold");
-      button.remove();
-    } else {
-      throw new Error("error", response);
-    }
+    const data = await fetchData();
+    loadProducts(data.slice(4));
+    button.classList.remove("_hold");
+    button.remove();
+  }
+
+  if(!button){
+    const data = await fetchData();
+    loadProducts(data.slice(0, 4));
   }
 };

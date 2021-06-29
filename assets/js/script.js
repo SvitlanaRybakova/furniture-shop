@@ -2,6 +2,7 @@ import { isMobile } from "./utils.js";
 import { init_Swiper} from "./utils.js";
 import { getProducts } from "./getProductsDetails.js"
 
+
 const menuBody = document.querySelector(".menu__body");
 const iconMenu = document.querySelector(".icon-menu");
 const swiperWrapper = document.querySelector('.swiper-wrapper');
@@ -25,10 +26,11 @@ testWebP(function (support) {
   }
 });
 
-// открытие субменю при нажатии на кнопку на тачскрине
+
 window.onload = function () {
-
-
+  // загрузка первых 4х карточек 
+  getProducts();
+// открытие субменю при нажатии на кнопку на тачскрине
   const documentActions = (e) => {
     const target = e.target;
   
@@ -57,7 +59,8 @@ window.onload = function () {
     ) {
       document.querySelector(".search-form").classList.remove("_active");
     }
-    //show more buuton
+    //show more button
+   
     if(target.classList.contains("products__more")) {
       getProducts(target);
       e.preventDefault;
