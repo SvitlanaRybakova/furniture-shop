@@ -29,7 +29,7 @@
               <div class="slider-main__body swiper-container">
                 <div class="swiper-wrapper">
                   <!-- сам слайд -->
-                  <div class="slider-main__slide swiper-slide">
+                  <div class="slider-main__slide swiper-slide-rooms">
                     <div class="slider-main__image">
                       <img src="img/main-slider/01.jpg" alt="first image">
                     </div>
@@ -140,9 +140,9 @@
               </div>
             </article> -->
             <!-- .article -->
-            
-          
-           
+
+
+
           </div>
           <!-- .products__items -->
           <div class="products__footer">
@@ -151,6 +151,81 @@
 
         </div>
       </sections>
+      <!-- rooms-slider -->
+      <section class="page__rooms rooms">
+        <div class="rooms__container _container">
+          <div class="rooms__body">
+            <h2 class="rooms__title _title">50+ Beautiful rooms for inspiration</h2>
+            <div class="rooms__text">Our designer already made a lot of beautiful prototipe of rooms that inspire you
+            </div>
+            <a href="#" class="rooms__button btn">Explore more</a>
+          </div>
+          <!-- slider -->
+          <div class="rooms__slider slider-rooms ">
+            <div class="slider-rooms__body ">
+              <!-- _swiper -->
+              <div class="swiper-wrapper">
+                <!-- 1st slide -->
+                <div class="slider-rooms__slide swiper-slide">
+                  <div class="slider-rooms__image">
+                    <img src="img/rooms/01.jpg" alt="First room">
+                  </div>
+                  <a href="#" data-swiper-parallax-opacity="0" data-swiper-parallax-y="-100%" class="slider-rooms__content _icon-arrow-link">
+                    <div class="slider-rooms__label label-slider">
+                      <div class="label-slider__number">01</div>
+                      <div class="label-slider__line"></div>
+                      <div class="label-slider__text">Bed Room</div>
+                    </div>
+                    <div class="slider-rooms__title">Inner Peace</div>
+                  </a>
+                </div>
+                <!-- ./1st slide -->
+
+                <!-- 2st slide -->
+                <div class="slider-rooms__slide swiper-slide ">
+                  <div class="slider-rooms__image">
+                    <img src="img/rooms/02.jpg" alt="Second room">
+                  </div>
+                  <a href="#" data-swiper-parallax-opacity="0" data-swiper-parallax-y="-100%"  class="slider-rooms__content _icon-arrow-link">
+                    <div class="slider-rooms__label label-slider">
+                      <div class="label-slider__number">02</div>
+                      <div class="label-slider__line"></div>
+                      <div class="label-slider__text">Kitchen</div>
+                    </div>
+                    <div class="slider-rooms__title">Bon Appetite</div>
+                  </a>
+                </div>
+                <!-- ./2st slide -->
+
+                 <!-- 3st slide -->
+                 <div class="slider-rooms__slide swiper-slide ">
+                  <div class="slider-rooms__image">
+                    <img src="img/rooms/03.jpg" alt="Third room">
+                  </div>
+                  <a href="#" data-swiper-parallax-opacity="0" data-swiper-parallax-y="-100%"  class="slider-rooms__content _icon-arrow-link">
+                    <div class="slider-rooms__label label-slider">
+                      <div class="label-slider__number">03</div>
+                      <div class="label-slider__line"></div>
+                      <div class="label-slider__text">Living Room</div>
+                    </div>
+                    <div class="slider-rooms__title">Happines</div>
+                  </a>
+                </div>
+                <!-- ./3st slide -->
+              </div>
+            </div>
+
+            <div class="slider-rooms__arrows slider-arrows">
+              <button type="button"
+                class="slider-arrow slider-arrow_whiteArrow slider-arrow_prew _icon-arrow-down "></button>
+              <button type="button"
+                class="slider-arrow slider-arrow_whiteArrow slider-arrow_next _icon-arrow-down "></button>
+            </div>
+            <div class="slider-rooms__dotts"></div>
+
+          </div>
+        </div>
+      </section>
     </main>
     @@include('_footer.html', {})
   </div>

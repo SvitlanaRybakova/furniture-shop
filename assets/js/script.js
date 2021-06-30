@@ -1,5 +1,6 @@
 import { isMobile } from "./utils.js";
-import { init_Swiper} from "./utils.js";
+import { main_Swiper} from "./utils.js";
+import { rooms_Swiper } from "./utils.js";
 import { getProducts } from "./getProductsDetails.js"
 import { addToCart } from "./cart.js";
 import { updateCart } from "./cart.js";
@@ -8,7 +9,7 @@ import { updateCart } from "./cart.js";
 const menuBody = document.querySelector(".menu__body");
 const iconMenu = document.querySelector(".icon-menu");
 const swiperWrapper = document.querySelector('.swiper-wrapper');
-
+const sliderRooms = document.querySelector('.slider-rooms')
 
 // проверяет может ли браузер отобразить формат картинок webp и если да, то доавляет специальный класс
 function testWebP(callback) {
@@ -112,9 +113,11 @@ window.onload = function () {
   // открываю = закрываю бургер меню
   iconMenu.addEventListener("click", toggleSubmenu);
  
- 
-  if(swiperWrapper){
-    init_Swiper()
+  if(swiperWrapper ){
+    main_Swiper()
+  }
+  if(sliderRooms){
+    rooms_Swiper()
   }
 
   // header, добавляет-удаляет класс при прокрутке сайта добавляет хедеру бэкграунд
@@ -127,5 +130,8 @@ window.onload = function () {
   }
   const headerObserver = new IntersectionObserver(callback);
   headerObserver.observe(headerElement);
+
+  
+  
 
 };
