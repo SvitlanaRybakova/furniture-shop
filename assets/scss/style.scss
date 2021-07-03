@@ -396,10 +396,9 @@ body {
 }
 .swiper-pagination-bullet {
   background-color: #fcf8f3 !important;
-  // border: 1px solid red;
   cursor: pointer !important;
-  flex: 0 0 26px !important;
-  height: 26px !important;
+  flex: 0 0 24px !important;
+  height: 23px !important;
   position: relative !important;
   display: flex !important;
   justify-content: center !important;
@@ -410,7 +409,7 @@ body {
   }
   &::after {
     content: "" !important;
-    width: 10px !important;
+    width: 9px !important;
     height: 9px !important;
     background-color: #d8d8d8 !important;
     border-radius: 50% !important;
@@ -675,7 +674,7 @@ body {
   background: #fcf8f3;
   padding-top: 44px;
   padding-bottom: 44px;
- 
+
   // .rooms__container
   &__container {
     @media (min-width: $md2+px) {
@@ -684,19 +683,19 @@ body {
   }
   // .rooms__body
   &__body {
-    flex: 0 0 465/1240 *100%; //ширина картинки / ширину slider-rooms
+    flex: 0 0 465/1240 * 100%; //ширина картинки / ширину slider-rooms
     position: relative;
     z-index: 5;
     align-self: center;
     @media (min-width: $md2+px) {
-     padding-right: 40px;
+      padding-right: 40px;
     }
   }
   // .rooms__title
   &__title {
     font-size: 35px;
-    &:not(:last-child){
-    margin: 0px 0px 8px / 40px * 1em 0px;
+    &:not(:last-child) {
+      margin: 0px 0px 8px / 40px * 1em 0px;
     }
     text-align: left;
   }
@@ -704,7 +703,7 @@ body {
   &__text {
     line-height: 150%;
     font-weight: 500;
-    &:not(:last-child){
+    &:not(:last-child) {
       margin: 0px 0px 24px 0px;
     }
   }
@@ -713,9 +712,9 @@ body {
     background: $orangeColor;
     color: #ffffff;
     min-width: 180px;
-    @media(any-hover: hover){
-      &:hover{
-        background-color:  #966749;
+    @media (any-hover: hover) {
+      &:hover {
+        background-color: #966749;
       }
     }
   }
@@ -723,20 +722,19 @@ body {
   &__slider {
     flex: 1 1 auto;
     min-width: 0;
-    // !custom style 
+    // !custom style
     max-width: 500px;
     align-self: flex-start;
   }
 }
 .slider-rooms {
-  
   position: relative;
   // slider-rooms__body
   &__body {
     overflow: visible;
     position: relative;
     // накрывает слайды сверху
-    &::before{
+    &::before {
       content: "";
       position: absolute;
       top: 0;
@@ -747,7 +745,6 @@ body {
       z-index: 2;
       transform: translate(-100%, 0px);
     }
-   
   }
   // slider-rooms__slide
   &__slide {
@@ -755,8 +752,8 @@ body {
     position: relative;
     overflow: hidden;
     // min-height: 585px;
-    &.swiper-slide-active{
-      .slider-rooms__image{
+    &.swiper-slide-active {
+      .slider-rooms__image {
         // border: 15px solid green;
         height: 686px;
       }
@@ -770,7 +767,7 @@ body {
     // width: 350px;
     @media (min-width: $md3+px) {
       height: 486px;
-     }
+    }
   }
   // slider-rooms__content
   &__content {
@@ -780,7 +777,7 @@ body {
     bottom: 50px;
     padding: 32px;
     background: rgba(255, 255, 255, 0.9);
-    &::before{
+    &::before {
       position: absolute;
       bottom: 0;
       right: 0;
@@ -800,7 +797,7 @@ body {
   // slider-rooms__title
   &__title {
     font-weight: 600;
-   font-size: calc(24px + 2 * ((110vw - 230px) / (1270 - 320)));
+    font-size: calc(24px + 2 * ((110vw - 230px) / (1270 - 320)));
   }
   // slider-rooms__arrows
   &__arrows {
@@ -812,7 +809,6 @@ body {
     left: -24px;
     z-index: 5;
     justify-content: space-between;
-  
   }
   // slider-rooms__dots
   &__dotts {
@@ -821,32 +817,129 @@ body {
       bottom: 90px;
       width: 100%;
       left: 320px;
-     }
+    }
   }
 }
-.label-slider{
+.label-slider {
   display: grid;
   grid-template-columns: auto 27px auto;
   color: $darkGrayColor;
   gap: 8px;
   align-items: center;
   justify-content: start;
-  &:not(:last-child){
+  &:not(:last-child) {
     margin: 0px 0px 8px 0px;
   }
   // label-slider__number
-  &__number{
-
+  &__number {
   }
-    // label-slider__line
-    &__line{
-      height: 1px;
-      background-color:  $darkGrayColor;
-    
+  // label-slider__line
+  &__line {
+    height: 1px;
+    background-color: $darkGrayColor;
+  }
+  // label-slider__text
+  &__text {
+  }
+}
+// furniture =====================================================
+.furniture {
+  padding-bottom: 85px;
+  padding-top: 85px;
+  // .furniture__container
+  &__container {
+  }
+  // .furniture__label
+  &__label {
+    text-align: center;
+    color: $darkGrayColor;
+    line-height: 150%;
+    font-size: calc(16px + 4 * ((100vw - 320px) / (1440 - 320)));
+    &:not(:last-child) {
+      margin: 0px 0px 8px/20px * 1em 0px;
     }
-      // label-slider__text
-  &__text{
-    
   }
-
+  // .furniture__title
+  &__title {
+    margin: 0px 0px 8px/20px * 1em 0px;
+  }
+  // .furniture__body
+  &__body {
+    position: relative;
+    @media (any-hover: none) {
+      overflow: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+  }
+  // .furniture__items
+  &__items {
+    // border: 1px solid red;
+    display: grid;
+    grid-template-columns: auto;
+    grid-auto-flow: column;
+    align-items: center;
+    gap: 16px;
+    @media (any-hover: hover) {
+      justify-content: center;
+    }
+  }
+  // .furniture__column
+  &__column {
+    // border: 1px solid green;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 0px -8px;
+    &:first-child {
+      justify-content: flex-end;
+    }
+  }
+  // .furniture__row
+  &__row {
+    display: inline-grid;
+    padding: 0px 8px;
+    gap: 16px;
+    grid-template-columns: auto;
+    grid-auto-flow: column;
+    &:not(:last-child) {
+      // margin: 0px 0px 16px 0px;
+    }
+  }
+}
+.row-furniture {
+  // .row-furniture_left-top
+  &_left-top {
+    justify-content: end;
+    align-items: end;
+  }
+  // .row-furniture_left-bottom
+  &_left-bottom {
+    justify-content: end;
+    align-items: start;
+  }
+  // .row-furniture_center
+  &_center {
+    display: block;
+  }
+  // .row-furniture_right-top
+  &_right-top {
+    align-items: end;
+  }
+  // .row-furniture_right-bottom
+  &_right-bottom {
+    align-items: flex-start;
+  }
+  // .row-furniture_item
+  &__item {
+    @media(any-hover: hover){
+      img{
+        transition: all 0.8s ease 0s;
+        filter: grayscale(1);
+         &:hover{
+        filter: grayscale(0);
+      }
+      }
+     
+    }
+  }
 }
